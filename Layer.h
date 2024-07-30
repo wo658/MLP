@@ -9,8 +9,8 @@ public:
 		for (int i = 0; i < weight.size(); i++)
 			weight[i].resize(num);
 
-		values.resize(num);
-		active_values.resize(num);
+		values.resize(num+1);
+		active_values.resize(num+1);
 
 	};
 	vector<vector<double>> weight;
@@ -19,16 +19,23 @@ public:
 	vector<vector <double>> diff;
 	int node_num;
 	int node_pre_num;
-	void init_weight() {
-		for (int i = 0; i < node_num; i++) {
-			for (int j = 0; j < node_pre_num; j++) {
-				weight[i][j] = (rand() % 20 - 10) / 10;
+	void init() {
+		for (int i = 0; i < node_pre_num; i++) {
+			for (int j = 0; j < node_num; j++) {
+				weight[i][j] = (rand()%20 - 10)/10.0 ;
 			}
 		}
+		for (int i = 0; i < node_num; i++) {
+				values[i] = 0;
+			
+		}
+
+
+
 	}
 
 };
-
+// 행이 이전 노드 열이 다음 노드 
 class output_layer : public layer{
 public:
 	output_layer(int pre_num,int num) : layer(pre_num,num) {
@@ -42,3 +49,7 @@ public:
 
 
 };
+
+
+// 1 . wegiht 지정
+// 2 . 
