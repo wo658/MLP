@@ -9,28 +9,33 @@ public:
 		for (int i = 0; i < weight.size(); i++)
 			weight[i].resize(num);
 
-		values.resize(num+1);
-		active_values.resize(num+1);
-
+		values.resize(num);
+		active_values.resize(num);
+		diff.resize(num);
 	};
 	vector<vector<double>> weight;
 	vector<double> values;
 	vector<double> active_values;
-	vector<vector <double>> diff;
+	vector <double> diff;
 	int node_num;
 	int node_pre_num;
+	double bias;
+
+
 	void init() {
 		for (int i = 0; i < node_pre_num; i++) {
 			for (int j = 0; j < node_num; j++) {
-				weight[i][j] = (rand()%20 - 10)/10.0 ;
+				//weight[i][j] = (rand()%20 - 10)/10.0 ;
+				weight[i][j] = 0;
 			}
 		}
 		for (int i = 0; i < node_num; i++) {
 				values[i] = 0;
-			
+				diff[i] = 0;
+				active_values[i] = 0;
 		}
 
-
+		bias = 3;
 
 	}
 
